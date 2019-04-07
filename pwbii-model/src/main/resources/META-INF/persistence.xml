@@ -5,6 +5,8 @@
     <jta-data-source>java:jboss/datasources/pwbii</jta-data-source>
     <class>py.com.prueba.modelo.Persona</class>
     <class>py.com.prueba.modelo.Agenda</class>
+    <class>py.com.prueba.modelo.Mapa</class>
+    <class>py.com.prueba.modelo.Ciudad</class>
     <class>py.com.prueba.modelo.Categoria</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5433/primerparcial"/>
