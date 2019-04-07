@@ -1,0 +1,67 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>py.com.prueba</groupId>
+    <artifactId>pwbii</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>pwbii-ear</artifactId>
+  <packaging>ear</packaging>
+  <dependencies>
+  	<dependency>
+  		<groupId>py.com.prueba</groupId>
+  		<artifactId>pwbii-model</artifactId>
+  	</dependency>
+  	<dependency>
+  		<groupId>py.com.prueba</groupId>
+  		<artifactId>pwbii-ejb</artifactId>
+  		<type>ejb</type>
+  	</dependency>
+  	<dependency>
+  		<groupId>py.com.prueba</groupId>
+  		<artifactId>pwbii-web</artifactId>
+  		<type>war</type>
+  	</dependency>
+  </dependencies>
+  <build>
+        <finalName>${project.artifactId}</finalName>
+        <plugins>
+        	
+        	<!-- Plugin para empaquetar el proyecto en un EAR -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-ear-plugin</artifactId>
+                <version>${version.ear.plugin}</version>
+                <configuration>
+                    <!-- Indica la versión de Java EE-->
+                    <version>6</version>
+                    <defaultLibBundleDir>lib</defaultLibBundleDir>
+                    <modules>
+                    	<webModule>
+				    		<groupId>py.com.prueba</groupId>
+				    		<artifactId>pwbii-web</artifactId>
+				    		<!-- Sobreescribe el context-root por defecto de la API REST -->
+			                <contextRoot>pwbii</contextRoot>
+			                <bundleFileName>pwbii-web.war</bundleFileName>
+			                <moduleId>pwbii-web</moduleId>
+			             </webModule>
+             		</modules>
+                    <fileNameMapping>no-version</fileNameMapping>
+                </configuration>
+            </plugin>
+            
+            <!-- Plugin para deployar el EAR en el jboss  -->
+            <plugin>
+                <groupId>org.wildfly.plugins</groupId>
+                <artifactId>wildfly-maven-plugin</artifactId>
+                <version>1.1.0.Alpha1</version>
+                <configuration>
+                    <filename>${project.artifactId}.ear</filename>
+                    <skip>false</skip>
+                </configuration>
+            </plugin>
+            
+        </plugins>
+    </build>
+</project>

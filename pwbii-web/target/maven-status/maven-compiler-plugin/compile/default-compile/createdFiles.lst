@@ -1,0 +1,4 @@
+py/com/prueba/rest/ApplicationConfig.class
+py/com/prueba/rest/JacksonObjectMapperProvider.class
+py/com/prueba/rest/PersonaRest.class
+py/com/prueba/rest/AgendaRest.class

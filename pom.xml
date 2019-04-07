@@ -1,0 +1,142 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>py.com.prueba</groupId>
+	<artifactId>pwbii</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<modules>
+		<module>pwbii-ear</module>
+		<module>pwbii-ejb</module>
+		<module>pwbii-model</module>
+		<module>pwbii-web</module>
+	</modules>
+
+	<properties>
+		
+		<!-- codificación de caracteres del código fuente -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<!-- configuración de java -->
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<version.javaee.ejb>3.1</version.javaee.ejb>
+
+		<!-- plugin de jboss -->
+		<version.jboss.maven.plugin>7.4.Final</version.jboss.maven.plugin>
+		<!-- plugin ear -->
+		<version.ear.plugin>2.6</version.ear.plugin>
+		<!-- plugin ejb -->
+		<version.ejb.plugin>2.3</version.ejb.plugin>
+		<!-- plugin war -->
+		<version.war.plugin>2.1.1</version.war.plugin>
+		<!-- plugin testing -->
+		<version.surefire.plugin>2.10</version.surefire.plugin>
+
+		
+		<!--javadoc y source attachment -->
+		<version.maven-source-plugin>2.0.4</version.maven-source-plugin>
+		<version.maven-javadoc-plugin>2.3</version.maven-javadoc-plugin>
+
+	</properties>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>py.com.prueba</groupId>
+				<artifactId>pwbii-model</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>py.com.prueba</groupId>
+				<artifactId>pwbii-ejb</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+				<type>ejb</type>
+			</dependency>
+			<dependency>
+				<groupId>py.com.prueba</groupId>
+				<artifactId>pwbii-web</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+				<type>war</type>
+			</dependency>
+			
+		</dependencies>
+	</dependencyManagement>
+	<repositories>
+		<repository>
+			<id>jboss-repository</id>
+			<name>JBoss Repository</name>
+			<url>http://repository.jboss.com/maven2</url>
+		</repository>
+		<repository>
+			<id>maven-central</id>
+			<name>Maven Central</name>
+			<url>http://repo1.maven.org/maven2</url>
+		</repository>
+	</repositories>
+	<build>
+	    <pluginManagement>
+        	<!-- Plugin para deployar la app en l jboss -->
+            <plugins>
+                <plugin>
+                    <groupId>org.jboss.as.plugins</groupId>
+                    <artifactId>jboss-as-maven-plugin</artifactId>
+                    <version>${version.jboss.maven.plugin}</version>
+                    <inherited>true</inherited>
+                    <configuration>
+                        <skip>true</skip>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>${version.maven-source-plugin}</version>
+                </plugin>
+                
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>${version.maven-javadoc-plugin}</version>
+                </plugin>
+
+            </plugins>
+        </pluginManagement>
+
+        <plugins>
+            <!-- START SNIPPET: source -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- END SNIPPET: source -->
+            <!-- START SNIPPET: javadoc -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+				<configuration>
+					<aggregate>true</aggregate>
+					<charset>UTF-8</charset>
+					<encoding>UTF-8</encoding>
+					<docencoding>UTF-8</docencoding>
+				</configuration>
+            </plugin>
+            <!-- END SNIPPET: javadoc -->
+        </plugins>
+    </build>
+</project>
