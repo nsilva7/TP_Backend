@@ -5,14 +5,15 @@
     <jta-data-source>java:jboss/datasources/pwbii</jta-data-source>
     <class>py.com.prueba.modelo.Persona</class>
     <class>py.com.prueba.modelo.Agenda</class>
+    <class>py.com.prueba.modelo.Categoria</class>
     <class>py.com.prueba.modelo.Mapa</class>
     <class>py.com.prueba.modelo.Ciudad</class>
-    <class>py.com.prueba.modelo.Categoria</class>
     <class>py.com.prueba.modelo.Local</class>
     <class>py.com.prueba.modelo.Sucursal</class>
     <class>py.com.prueba.modelo.Servicio</class>
-    <class>py.com.prueba.modelo.Especialidad</class>
     <class>py.com.prueba.modelo.SucursalServicio</class>
+    <class>py.com.prueba.modelo.Especialidad</class>
+    <class>py.com.prueba.modelo.py.com.prueba.modelo.Reserva</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5433/primerparcial"/>
       <property name="javax.persistence.jdbc.user" value="postgres"/>

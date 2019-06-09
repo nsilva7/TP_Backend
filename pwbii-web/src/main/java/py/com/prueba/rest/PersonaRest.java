@@ -35,10 +35,10 @@ public class PersonaRest {
     @Context
     protected UriInfo uriInfo;
 
-
     @GET
     @Path("/")
     public Response listar() throws WebApplicationException{
+        System.out.println("LISTAR PERSONAS");
 
         List<Persona> listEntity = null;
         Long total = null;
