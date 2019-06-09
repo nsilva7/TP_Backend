@@ -8,6 +8,7 @@ import java.math.BigInteger;
 import java.util.Date;
 
 @Entity
+@Table(name="sucursal_servicio")
 public class SucursalServicio implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -32,12 +33,12 @@ public class SucursalServicio implements Serializable {
     @JoinColumn(name = "id_sucursal", referencedColumnName = "id_sucursal")
     @ManyToOne(fetch = FetchType.EAGER)
     @JsonIgnore
-    private Integer idSucursal;
+    private Sucursal sucursal;
     
     @JoinColumn(name = "id_servicio", referencedColumnName = "id_servicio")
     @ManyToOne(fetch = FetchType.EAGER)
     @JsonIgnore
-    private Integer idServicio;
+    private Servicio servicio;
     
     public SucursalServicio() {
 
@@ -75,21 +76,7 @@ public class SucursalServicio implements Serializable {
         this.capacidad = capacidad;
     }
 
-    public Integer getIdSucursal() {
-        return idSucursal;
-    }
 
-    public void setIdSucursal(Integer idSucursal) {
-        this.idSucursal = idSucursal;
-    }
-
-    public Integer getIdServicio() {
-        return idServicio;
-    }
-
-    public void setIdServicio(Integer idServicio) {
-        this.idServicio = idServicio;
-    }
     
     
 

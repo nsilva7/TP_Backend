@@ -30,8 +30,6 @@ public class Local implements Serializable {
         inverseJoinColumns = @JoinColumn(name = "id_local"))
     Set<Categoria> localCategorias;
     
-    @Transient
-    private Persona persona;
     public Local() {
 
     }

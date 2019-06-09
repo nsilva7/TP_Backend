@@ -21,7 +21,7 @@ public class Persona implements Serializable {
     @Basic(optional = false)
     @Column(name = "apellido",length=50)
     private String apellido;
-    @OneToMany(mappedBy = "idPersona",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "persona",fetch = FetchType.EAGER)
     private List<Agenda> agendaList;
     public Persona() {
 

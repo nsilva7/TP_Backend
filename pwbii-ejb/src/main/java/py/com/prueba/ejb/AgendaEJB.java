@@ -11,6 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.List;
+import py.com.prueba.modelo.Especialidad;
 
 
 @Stateless
@@ -23,6 +24,9 @@ public class AgendaEJB {
     
     @Inject
     private CategoriaEJB CategoriaEJB;
+    
+    @Inject
+    private EspecialidadEJB EspecialidadEJB;
 
     protected EntityManager getEm() {
         return em;
@@ -36,8 +40,8 @@ public class AgendaEJB {
         if (personaEJB.get(entity.getPersona().getIdPersona())==null) {
             throw new RuntimeException("La persona no existe");
         }
-        entity.setIdPersona(new Persona());
-        entity.getIdPersona().setIdPersona(entity.getPersona().getIdPersona());
+        entity.setPersona(new Persona());
+        entity.getPersona().setIdPersona(entity.getPersona().getIdPersona());
         getEm().persist(entity);
     }
     public Agenda merge(Agenda entity){
@@ -65,6 +69,11 @@ public class AgendaEJB {
     @SuppressWarnings("unchecked")
     public List<Categoria> listaCategorias() {
         return (List<Categoria>) CategoriaEJB.lista();
+    }
+    
+    @SuppressWarnings("unchecked")
+    public List<Especialidad> listaEspecialidades() {
+        return (List<Especialidad>) EspecialidadEJB.lista();
     }
     
 }

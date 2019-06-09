@@ -17,6 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.ws.rs.GET;
+import py.com.prueba.modelo.Especialidad;
 
 @Path("agenda")
 @Produces("application/json")
@@ -95,6 +96,19 @@ public class AgendaRest {
         listEntity = agendaEJB.listaCategorias();
         Map<String,Object> mapaResultado=new HashMap<String, Object>();
         mapaResultado.put("categorias", listEntity);
+
+        return Response.ok(mapaResultado).build();
+
+    }
+    
+    @GET
+    @Path("/especialidad")
+    public Response listarEspecialidades(@QueryParam("idSucursal") int idSucursal) throws WebApplicationException{
+        
+        List<Especialidad> listEntity = null;
+        listEntity = agendaEJB.listaEspecialidades();
+        Map<String,Object> mapaResultado=new HashMap<String, Object>();
+        mapaResultado.put("lista", listEntity);
 
         return Response.ok(mapaResultado).build();
 

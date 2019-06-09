@@ -29,22 +29,16 @@ public class Sucursal implements Serializable {
     @JoinColumn(name = "id_local", referencedColumnName = "id_local")
     @OneToOne(fetch = FetchType.EAGER)
     @JsonIgnore
-    private Integer idLocal;
-    @Transient
     private Local local;
     
     @JoinColumn(name = "id_ciudad", referencedColumnName = "id_ciudad")
     @OneToOne(fetch = FetchType.EAGER)
     @JsonIgnore
-    private Integer idCiudad;
-    @Transient
     private Ciudad ciudad;
             
     @JoinColumn(name = "id_mapa", referencedColumnName = "id_mapa")
     @OneToOne(fetch = FetchType.EAGER)
     @JsonIgnore
-    private Integer idMapa;
-    @Transient
     private Mapa mapa;     
     
     @Basic(optional = false)
@@ -99,7 +93,7 @@ public class Sucursal implements Serializable {
     @Column(name = "domingo_hora_cierre")
     private String domingoHoraCierre;
     
-    @OneToMany(mappedBy = "idSucursal",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "sucursal",fetch = FetchType.EAGER)
     private List<SucursalServicio> sucursalServicioList;
     
     public Sucursal() {
@@ -138,28 +132,12 @@ public class Sucursal implements Serializable {
         this.local = local;
     }
 
-    public Integer getIdCiudad() {
-        return idCiudad;
-    }
-
-    public void setIdCiudad(Integer idCiudad) {
-        this.idCiudad = idCiudad;
-    }
-
     public Ciudad getCiudad() {
         return ciudad;
     }
 
     public void setCiudad(Ciudad ciudad) {
         this.ciudad = ciudad;
-    }
-
-    public Integer getIdMapa() {
-        return idMapa;
-    }
-
-    public void setIdMapa(Integer idMapa) {
-        this.idMapa = idMapa;
     }
 
     public Mapa getMapa() {

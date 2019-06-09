@@ -23,12 +23,13 @@ public class Servicio implements Serializable {
     @Basic(optional = false)
     @Column(name = "duracion_referencia")
     private Integer duracion_referencia;
+    
     @JoinColumn(name = "id_especialidad", referencedColumnName = "id_especialidad")
     @ManyToOne(fetch = FetchType.EAGER)
     @JsonIgnore
-    private Integer idEspecialidad;
+    private Especialidad especialidad;
     
-    @OneToMany(mappedBy = "idServicio",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "servicio",fetch = FetchType.EAGER)
     private List<SucursalServicio> sucursalServicioList;
     
      public Servicio() {
@@ -57,14 +58,6 @@ public class Servicio implements Serializable {
 
     public void setDuracion_referencia(Integer duracion_referencia) {
         this.duracion_referencia = duracion_referencia;
-    }
-
-    public Integer getIdEspecialidad() {
-        return idEspecialidad;
-    }
-
-    public void setIdEspecialidad(Integer idEspecialidad) {
-        this.idEspecialidad = idEspecialidad;
     }
     
     

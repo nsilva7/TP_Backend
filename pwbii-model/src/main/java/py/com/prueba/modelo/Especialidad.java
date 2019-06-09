@@ -20,7 +20,8 @@ public class Especialidad implements Serializable {
     @Basic(optional = false)
     @Column(name = "nombre",length=50,unique=true)
     private String nombre;
-    @OneToMany(mappedBy = "idServicio",fetch = FetchType.EAGER)
+    
+    @OneToMany(mappedBy = "especialidad",fetch = FetchType.EAGER)
     private List<Servicio> servicioList;
 
     public Especialidad() {
