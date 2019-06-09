@@ -11,6 +11,8 @@
       <class>py.com.prueba.modelo.Mapa</class>
       <class>py.com.prueba.modelo.Ciudad</class>
       <class>py.com.prueba.modelo.Categoria</class>
+      <class>py.com.prueba.modelo.Local</class>
+      <class>py.com.prueba.modelo.Sucursal</class>
       <properties>
          <!-- Properties for Hibernate -->
          <!-- property name="hibernate.hbm2ddl.auto" value="update"/-->
