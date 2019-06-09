@@ -26,7 +26,7 @@ public class Agenda implements Serializable {
     @JoinColumn(name = "id_persona", referencedColumnName = "id_persona")
     @ManyToOne(fetch = FetchType.EAGER)
     @JsonIgnore
-    private Persona idPersona;
+    private Integer idPersona;
 
     @Transient
     private Persona persona;
@@ -58,11 +58,11 @@ public class Agenda implements Serializable {
         this.fecha = fecha;
     }
 
-    public Persona getIdPersona() {
+    public Integer getIdPersona() {
         return idPersona;
     }
 
-    public void setIdPersona(Persona idPersona) {
+    public void setIdPersona(Integer idPersona) {
         this.idPersona = idPersona;
     }
 
