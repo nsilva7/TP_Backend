@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name="sucursal")
@@ -97,15 +98,189 @@ public class Sucursal implements Serializable {
     @Basic(optional = false)
     @Column(name = "domingo_hora_cierre")
     private String domingoHoraCierre;
+    
+    @OneToMany(mappedBy = "idSucursal",fetch = FetchType.EAGER)
+    private List<SucursalServicio> sucursalServicioList;
+    
     public Sucursal() {
 
     }
 
-    public Integer getIdLocal() {
-        return idLocal;
+    public Integer getIdSucursal() {
+        return idSucursal;
     }
 
-    public void setIdLocal(Integer idLocal) {
-        this.idLocal = idLocal;
+    public void setIdSucursal(Integer idSucursal) {
+        this.idSucursal = idSucursal;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public Local getLocal() {
+        return local;
+    }
+
+    public void setLocal(Local local) {
+        this.local = local;
+    }
+
+    public Integer getIdCiudad() {
+        return idCiudad;
+    }
+
+    public void setIdCiudad(Integer idCiudad) {
+        this.idCiudad = idCiudad;
+    }
+
+    public Ciudad getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(Ciudad ciudad) {
+        this.ciudad = ciudad;
+    }
+
+    public Integer getIdMapa() {
+        return idMapa;
+    }
+
+    public void setIdMapa(Integer idMapa) {
+        this.idMapa = idMapa;
+    }
+
+    public Mapa getMapa() {
+        return mapa;
+    }
+
+    public void setMapa(Mapa mapa) {
+        this.mapa = mapa;
+    }
+
+    public String getLunesHoraApertura() {
+        return lunesHoraApertura;
+    }
+
+    public void setLunesHoraApertura(String lunesHoraApertura) {
+        this.lunesHoraApertura = lunesHoraApertura;
+    }
+
+    public String getLunesHoraCierre() {
+        return lunesHoraCierre;
+    }
+
+    public void setLunesHoraCierre(String lunesHoraCierre) {
+        this.lunesHoraCierre = lunesHoraCierre;
+    }
+
+    public String getMartesHoraApertura() {
+        return martesHoraApertura;
+    }
+
+    public void setMartesHoraApertura(String martesHoraApertura) {
+        this.martesHoraApertura = martesHoraApertura;
+    }
+
+    public String getMartesHoracierre() {
+        return martesHoracierre;
+    }
+
+    public void setMartesHoracierre(String martesHoracierre) {
+        this.martesHoracierre = martesHoracierre;
+    }
+
+    public String getMiercolesNoraapertura() {
+        return miercolesNoraapertura;
+    }
+
+    public void setMiercolesNoraapertura(String miercolesNoraapertura) {
+        this.miercolesNoraapertura = miercolesNoraapertura;
+    }
+
+    public String getMiercolesHoraCierre() {
+        return miercolesHoraCierre;
+    }
+
+    public void setMiercolesHoraCierre(String miercolesHoraCierre) {
+        this.miercolesHoraCierre = miercolesHoraCierre;
+    }
+
+    public String getJuevesHoraApertura() {
+        return juevesHoraApertura;
+    }
+
+    public void setJuevesHoraApertura(String juevesHoraApertura) {
+        this.juevesHoraApertura = juevesHoraApertura;
+    }
+
+    public String getJuevesGoraCierre() {
+        return juevesGoraCierre;
+    }
+
+    public void setJuevesGoraCierre(String juevesGoraCierre) {
+        this.juevesGoraCierre = juevesGoraCierre;
+    }
+
+    public String getViernesGoraApertura() {
+        return viernesGoraApertura;
+    }
+
+    public void setViernesGoraApertura(String viernesGoraApertura) {
+        this.viernesGoraApertura = viernesGoraApertura;
+    }
+
+    public String getViernesHoraCierre() {
+        return viernesHoraCierre;
+    }
+
+    public void setViernesHoraCierre(String viernesHoraCierre) {
+        this.viernesHoraCierre = viernesHoraCierre;
+    }
+
+    public String getSabadoHoraApertura() {
+        return sabadoHoraApertura;
+    }
+
+    public void setSabadoHoraApertura(String sabadoHoraApertura) {
+        this.sabadoHoraApertura = sabadoHoraApertura;
+    }
+
+    public String getSabadoHoraCierre() {
+        return sabadoHoraCierre;
+    }
+
+    public void setSabadoHoraCierre(String sabadoHoraCierre) {
+        this.sabadoHoraCierre = sabadoHoraCierre;
+    }
+
+    public String getDomingoHoraCierre() {
+        return domingoHoraCierre;
+    }
+
+    public void setDomingoHoraCierre(String domingoHoraCierre) {
+        this.domingoHoraCierre = domingoHoraCierre;
+    }
+
+    public List<SucursalServicio> getSucursalServicioList() {
+        return sucursalServicioList;
+    }
+
+    public void setSucursalServicioList(List<SucursalServicio> sucursalServicioList) {
+        this.sucursalServicioList = sucursalServicioList;
+    }
+
+   
 }
