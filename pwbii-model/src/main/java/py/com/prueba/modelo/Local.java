@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name="local")
@@ -22,8 +23,13 @@ public class Local implements Serializable {
     @Basic(optional = false)
     @Column(name = "descripcion",length=200)
     private String descripcion;
-    @Basic(optional = false)
-
+    @ManyToMany
+    @JoinTable(
+        name = "categoria_local", 
+        joinColumns = @JoinColumn(name = "id_categoria"), 
+        inverseJoinColumns = @JoinColumn(name = "id_local"))
+    Set<Categoria> localCategorias;
+    
     @Transient
     private Persona persona;
     public Local() {

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 
 @Entity
@@ -18,8 +19,8 @@ public class Categoria implements Serializable {
     @Column(name = "nombre",length=50)
     private String nombre;
 
-    @Transient
-    private Persona persona;
+    @ManyToMany(mappedBy = "localCategorias")
+    Set<Local> localCategorias;
     public Categoria() {
 
     }
