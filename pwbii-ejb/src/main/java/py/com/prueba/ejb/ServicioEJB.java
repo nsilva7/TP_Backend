@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.List;
+import py.com.prueba.modelo.SucursalServicio;
 
 
 @Stateless
@@ -22,6 +23,11 @@ public class ServicioEJB {
 
     public Servicio get(Integer id) {
         return em.find(Servicio.class, id);
+    }
+    
+    public SucursalServicio getSucursalServicio(Integer id){
+        return em.find(SucursalServicio.class, id);
+        
     }
 
     public void persist(Servicio entity){

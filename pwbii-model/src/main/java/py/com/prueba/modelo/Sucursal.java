@@ -45,72 +45,72 @@ public class Sucursal implements Serializable {
     @Basic(optional = false)
     @Temporal(TemporalType.TIME)
     @Column(name = "lunes_hora_apertura")
-    private Time lunesHoraApertura;
+    private Date lunesHoraApertura;
     
     @Basic(optional = false)
     @Temporal(TemporalType.TIME)
     @Column(name = "lunes_hora_cierre")
-    private Time lunesHoraCierre;
+    private Date lunesHoraCierre;
     
     @Basic(optional = false)
     @Temporal(TemporalType.TIME)
     @Column(name = "martes_hora_apertura")
-    private Time martesHoraApertura;
+    private Date martesHoraApertura;
     
     @Basic(optional = false)
     @Temporal(TemporalType.TIME)
     @Column(name = "martes_hora_cierre")
-    private Time martesHoracierre;
+    private Date martesHoracierre;
     
     @Basic(optional = false)
     @Temporal(TemporalType.TIME)
     @Column(name = "miercoles_hora_apertura")
-    private Time miercolesHoraApertura;
+    private Date miercolesHoraApertura;
     
     @Basic(optional = false)
     @Temporal(TemporalType.TIME)
     @Column(name = "miercoles_hora_cierre")
-    private Time miercolesHoraCierre;
+    private Date miercolesHoraCierre;
     
     @Basic(optional = false)
     @Temporal(TemporalType.TIME)
     @Column(name = "jueves_hora_apertura")
-    private Time juevesHoraApertura;
+    private Date juevesHoraApertura;
     
     @Basic(optional = false)
     @Temporal(TemporalType.TIME)
     @Column(name = "jueves_hora_cierre")
-    private Time juevesHoraCierre;
+    private Date juevesHoraCierre;
     
     @Basic(optional = false)
     @Temporal(TemporalType.TIME)
     @Column(name = "viernes_hora_apertura")
-    private Time viernesHoraApertura;
+    private Date viernesHoraApertura;
     
     @Basic(optional = false)
     @Temporal(TemporalType.TIME)
     @Column(name = "viernes_hora_cierre")
-    private Time viernesHoraCierre;
+    private Date viernesHoraCierre;
     
     @Basic(optional = false)
     @Temporal(TemporalType.TIME)
     @Column(name = "sabado_hora_apertura")
-    private Time sabadoHoraApertura;
+    private Date sabadoHoraApertura;
     
     @Basic(optional = false)
     @Temporal(TemporalType.TIME)
     @Column(name = "sabado_hora_cierre")
-    private Time sabadoHoraCierre;
+    private Date sabadoHoraCierre;
     
     @Basic(optional = false)
     @Temporal(TemporalType.TIME)
     @Column(name = "domingo_hora_apertura")
-    private Time domingoHoraApertura;
+    private Date domingoHoraApertura;
     
     @Basic(optional = false)
     @Temporal(TemporalType.TIME)
     @Column(name = "domingo_hora_cierre")
-    private Time domingoHoraCierre;
+    private Date domingoHoraCierre;
     
     @OneToMany(mappedBy = "sucursal",fetch = FetchType.EAGER)
     private List<SucursalServicio> sucursalServicioList;
@@ -167,107 +167,107 @@ public class Sucursal implements Serializable {
         this.mapa = mapa;
     }
 
-    public Time getLunesHoraApertura() {
+    public Date getLunesHoraApertura() {
         return lunesHoraApertura;
     }
 
-    public void setLunesHoraApertura(Time lunesHoraApertura) {
+    public void setLunesHoraApertura(Date lunesHoraApertura) {
         this.lunesHoraApertura = lunesHoraApertura;
     }
 
-    public Time getLunesHoraCierre() {
+    public Date getLunesHoraCierre() {
         return lunesHoraCierre;
     }
 
-    public void setLunesHoraCierre(Time lunesHoraCierre) {
+    public void setLunesHoraCierre(Date lunesHoraCierre) {
         this.lunesHoraCierre = lunesHoraCierre;
     }
 
-    public Time getMartesHoraApertura() {
+    public Date getMartesHoraApertura() {
         return martesHoraApertura;
     }
 
-    public void setMartesHoraApertura(Time martesHoraApertura) {
+    public void setMartesHoraApertura(Date martesHoraApertura) {
         this.martesHoraApertura = martesHoraApertura;
     }
 
-    public Time getMartesHoracierre() {
+    public Date getMartesHoracierre() {
         return martesHoracierre;
     }
 
-    public void setMartesHoracierre(Time martesHoracierre) {
+    public void setMartesHoracierre(Date martesHoracierre) {
         this.martesHoracierre = martesHoracierre;
     }
 
-    public Time getMiercolesHoraApertura() {
+    public Date getMiercolesHoraApertura() {
         return miercolesHoraApertura;
     }
 
-    public void setMiercolesHoraApertura(Time miercolesHoraApertura) {
+    public void setMiercolesHoraApertura(Date miercolesHoraApertura) {
         this.miercolesHoraApertura = miercolesHoraApertura;
     }
 
-    public Time getMiercolesHoraCierre() {
+    public Date getMiercolesHoraCierre() {
         return miercolesHoraCierre;
     }
 
-    public void setMiercolesHoraCierre(Time miercolesHoraCierre) {
+    public void setMiercolesHoraCierre(Date miercolesHoraCierre) {
         this.miercolesHoraCierre = miercolesHoraCierre;
     }
 
-    public Time getJuevesHoraApertura() {
+    public Date getJuevesHoraApertura() {
         return juevesHoraApertura;
     }
 
-    public void setJuevesHoraApertura(Time juevesHoraApertura) {
+    public void setJuevesHoraApertura(Date juevesHoraApertura) {
         this.juevesHoraApertura = juevesHoraApertura;
     }
 
-    public Time getJuevesHoraCierre() {
+    public Date getJuevesHoraCierre() {
         return juevesHoraCierre;
     }
 
-    public void setJuevesHoraCierre(Time juevesHoraCierre) {
+    public void setJuevesHoraCierre(Date juevesHoraCierre) {
         this.juevesHoraCierre = juevesHoraCierre;
     }
 
-    public Time getViernesGoraApertura() {
+    public Date getViernesGoraApertura() {
         return viernesHoraApertura;
     }
 
-    public void setViernesHoraApertura(Time viernesHoraApertura) {
+    public void setViernesHoraApertura(Date viernesHoraApertura) {
         this.viernesHoraApertura = viernesHoraApertura;
     }
 
-    public Time getViernesHoraCierre() {
+    public Date getViernesHoraCierre() {
         return viernesHoraCierre;
     }
 
-    public void setViernesHoraCierre(Time viernesHoraCierre) {
+    public void setViernesHoraCierre(Date viernesHoraCierre) {
         this.viernesHoraCierre = viernesHoraCierre;
     }
 
-    public Time getSabadoHoraApertura() {
+    public Date getSabadoHoraApertura() {
         return sabadoHoraApertura;
     }
 
-    public void setSabadoHoraApertura(Time sabadoHoraApertura) {
+    public void setSabadoHoraApertura(Date sabadoHoraApertura) {
         this.sabadoHoraApertura = sabadoHoraApertura;
     }
 
-    public Time getSabadoHoraCierre() {
+    public Date getSabadoHoraCierre() {
         return sabadoHoraCierre;
     }
 
-    public void setSabadoHoraCierre(Time sabadoHoraCierre) {
+    public void setSabadoHoraCierre(Date sabadoHoraCierre) {
         this.sabadoHoraCierre = sabadoHoraCierre;
     }
 
-    public Time getDomingoHoraCierre() {
+    public Date getDomingoHoraCierre() {
         return domingoHoraCierre;
     }
 
-    public void setDomingoHoraCierre(Time domingoHoraCierre) {
+    public void setDomingoHoraCierre(Date domingoHoraCierre) {
         this.domingoHoraCierre = domingoHoraCierre;
     }
 

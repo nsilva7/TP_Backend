@@ -32,7 +32,7 @@ public class Reserva {
     @Basic(optional = false)
     @Temporal(TemporalType.TIME)
     @Column(name = "hora_fin")
-    private Time horaFin;
+    private Date horaFin;
     
     @JoinColumn(name = "id_sucursal_servicio", referencedColumnName = "id_sucursal_servicio")
     @ManyToOne(fetch = FetchType.EAGER)
@@ -42,12 +42,12 @@ public class Reserva {
     @JoinColumn(name = "id_empleado", referencedColumnName = "id_persona")
     @ManyToOne(fetch = FetchType.EAGER)
     @JsonIgnore
-    private Persona idPersona;  
+    private Persona empleado;  
     
     @JoinColumn(name = "id_cliente", referencedColumnName = "id_persona")
     @ManyToOne(fetch = FetchType.EAGER)
     @JsonIgnore
-    private Persona idCliente; 
+    private Persona cliente; 
     
     @Basic(optional = false)
     @Temporal(TemporalType.DATE)
@@ -56,11 +56,11 @@ public class Reserva {
     
     @Basic(optional = false)
     @Column(name = "flag_estado",length=1)
-    private char flasEstado;
+    private char flagEstado;
     
     @Basic(optional = false)
     @Column(name = "flag_asistido",length=1)
-    private char flasAsistido;
+    private char flagAsistido;
     
     @Basic(optional = false)
     @Column(name = "observacion",length=200)
@@ -90,11 +90,11 @@ public class Reserva {
         this.horaInicio = horaInicio;
     }
 
-    public Time getHoraFin() {
+    public Date getHoraFin() {
         return horaFin;
     }
 
-    public void setHoraFin(Time horaFin) {
+    public void setHoraFin(Date horaFin) {
         this.horaFin = horaFin;
     }
 
@@ -106,20 +106,20 @@ public class Reserva {
         this.sucursalServicio = sucursalServicio;
     }
 
-    public Persona getIdPersona() {
-        return idPersona;
+    public Persona getEmpleado() {
+        return empleado;
     }
 
-    public void setIdPersona(Persona idPersona) {
-        this.idPersona = idPersona;
+    public void setEmpleado(Persona persona) {
+        this.empleado = persona;
     }
 
-    public Persona getIdCliente() {
-        return idCliente;
+    public Persona getCliente() {
+        return cliente;
     }
 
-    public void setIdCliente(Persona idCliente) {
-        this.idCliente = idCliente;
+    public void setCliente(Persona cliente) {
+        this.cliente = cliente;
     }
 
     public Date getFechaHoraCreacion() {
@@ -130,20 +130,20 @@ public class Reserva {
         this.fechaHoraCreacion = fechaHoraCreacion;
     }
 
-    public char getFlasEstado() {
-        return flasEstado;
+    public char getFlagEstado() {
+        return flagEstado;
     }
 
-    public void setFlasEstado(char flasEstado) {
-        this.flasEstado = flasEstado;
+    public void setFlagEstado(char flagEstado) {
+        this.flagEstado = flagEstado;
     }
 
-    public char getFlasAsistido() {
-        return flasAsistido;
+    public char getFlagAsistido() {
+        return flagAsistido;
     }
 
-    public void setFlasAsistido(char flasAsistido) {
-        this.flasAsistido = flasAsistido;
+    public void setFlagAsistido(char flagAsistido) {
+        this.flagAsistido = flagAsistido;
     }
 
     public String getObservacion() {
