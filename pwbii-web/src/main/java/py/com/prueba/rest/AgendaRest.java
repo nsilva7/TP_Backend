@@ -17,6 +17,10 @@ import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.core.UriInfo;
 import java.net.URI;
 import java.net.URLEncoder;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -149,5 +153,52 @@ public class AgendaRest {
             e.printStackTrace();
         }
         return Response.created(resourceUri).build();
+    }
+    
+    @GET
+    @Path("/reserva")
+    public Response listar(
+            @QueryParam("fechaDesde") String fecha_desde,
+            @QueryParam("fechaHasta") String fecha_hasta,
+            @QueryParam("horaDesde") String hora_desde,
+            @QueryParam("horaHasta") String hora_hasta,
+            @QueryParam("idServicio") Integer id_servicio,
+            @QueryParam("idEspecialidad") Integer id_especialidad,
+            @QueryParam("idEmpleado") Integer id_empleado,            
+            @QueryParam("idLocal") Integer id_local,
+            @QueryParam("idsucursal") Integer id_sucursal,
+            @QueryParam("estado") String estado,
+            @QueryParam("asistio") String asistio,
+            @QueryParam("from") Integer from,
+            @QueryParam("to") Integer to
+    ) throws WebApplicationException{
+        List list = reservaEJB.lista(fecha_desde, fecha_hasta, hora_desde, hora_hasta,
+            id_servicio, id_especialidad, id_empleado, id_local, id_sucursal,
+            estado, asistio, from, to
+        );
+        
+        return Response.ok(list).build();
+
+    }
+    
+    @GET
+    @Path("/reserva/disponible")
+    public Response listar(@QueryParam("idSucursalServicio") int idSucursalServicio,@QueryParam("fecha") String fecha,@QueryParam("idEmpleado") Integer idEmpleado ) throws WebApplicationException, ParseException{
+        System.out.println("listarDisponibles");
+        ArrayList<Map<String, String>> listEntity = null;
+        Long total = null;
+        if(idEmpleado == null)
+            idEmpleado = 0;
+        listEntity = reservaEJB.listaDisponibles(idSucursalServicio ,fecha, idEmpleado);
+        Map<String,Object> mapaResultado=new HashMap<String, Object>();
+        mapaResultado.put("lista", listEntity);
+
+        return Response.ok(mapaResultado).build();
+    }
+    
+    @PUT
+    @Path("/reserva")
+    public Response modificar(Reserva entity) throws WebApplicationException {
+        return Response.ok(reservaEJB.actualizar(entity)).build();
     }
 }

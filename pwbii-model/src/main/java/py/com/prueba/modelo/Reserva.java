@@ -9,7 +9,7 @@ import java.util.List;
 import javax.persistence.*;
 
 @Entity
-@Table(name="persona")
+@Table(name="reserva")
 public class Reserva {
     private static final long serialVersionUID = 1L;
     @Id
@@ -37,7 +37,7 @@ public class Reserva {
     @JoinColumn(name = "id_sucursal_servicio", referencedColumnName = "id_sucursal_servicio")
     @ManyToOne(fetch = FetchType.EAGER)
     @JsonIgnore
-    private SucursalServicio sucursalServicio;  
+    private SucursalServicio idSucursalServicio;  
     
     @JoinColumn(name = "id_empleado", referencedColumnName = "id_persona")
     @ManyToOne(fetch = FetchType.EAGER)
@@ -59,8 +59,8 @@ public class Reserva {
     private char flagEstado;
     
     @Basic(optional = false)
-    @Column(name = "flag_asistido",length=1)
-    private char flagAsistido;
+    @Column(name = "flag_asistio",length=1)
+    private char flagAsistio;
     
     @Basic(optional = false)
     @Column(name = "observacion",length=200)
@@ -99,11 +99,11 @@ public class Reserva {
     }
 
     public SucursalServicio getSucursalServicio() {
-        return sucursalServicio;
+        return idSucursalServicio;
     }
 
     public void setSucursalServicio(SucursalServicio sucursalServicio) {
-        this.sucursalServicio = sucursalServicio;
+        this.idSucursalServicio = sucursalServicio;
     }
 
     public Persona getEmpleado() {
@@ -138,12 +138,12 @@ public class Reserva {
         this.flagEstado = flagEstado;
     }
 
-    public char getFlagAsistido() {
-        return flagAsistido;
+    public char getFlagAsistio() {
+        return flagAsistio;
     }
 
-    public void setFlagAsistido(char flagAsistido) {
-        this.flagAsistido = flagAsistido;
+    public void setFlagAsistio(char flagAsistio) {
+        this.flagAsistio = flagAsistio;
     }
 
     public String getObservacion() {

@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import py.com.prueba.modelo.Sucursal;
+import py.com.prueba.modelo.SucursalServicio;
 
 @Stateless
 public class SucursalEJB {
@@ -18,6 +19,10 @@ public class SucursalEJB {
 
     public Sucursal get(Integer id) {
         return em.find(Sucursal.class, id);
+    }
+    
+    public SucursalServicio getSucursalServicio(Integer id) {
+        return em.find(SucursalServicio.class, id);
     }
 
     public void persist(Sucursal entity){

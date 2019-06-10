@@ -15,6 +15,7 @@
     <class>py.com.prueba.modelo.PersonaSucursalServicio</class>
     <class>py.com.prueba.modelo.Especialidad</class>
     <class>py.com.prueba.modelo.Reserva</class>
+    <class>py.com.prueba.modelo.HorarioExcepcion</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5433/primerparcial"/>
       <property name="javax.persistence.jdbc.user" value="postgres"/>
