@@ -21,6 +21,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.ws.rs.GET;
+import py.com.prueba.modelo.Especialidad;
+import py.com.prueba.modelo.Persona;
 
 @Path("agenda")
 @Produces("application/json")
@@ -111,7 +113,20 @@ public class AgendaRest {
     public Response listarEspecialidades(@QueryParam("idSucursal") int idSucursal) throws WebApplicationException{
         
         List<Especialidad> listEntity = null;
-        listEntity = agendaEJB.listaEspecialidades();
+        listEntity = agendaEJB.listaEspecialidades(idSucursal);
+        Map<String,Object> mapaResultado=new HashMap<String, Object>();
+        mapaResultado.put("lista", listEntity);
+
+        return Response.ok(mapaResultado).build();
+
+    }
+    
+    @GET
+    @Path("/profesionales")
+    public Response listarProfesionales(@QueryParam("idSucursalServicio") int idSucursalServicio) throws WebApplicationException{
+        
+        List<Persona> listEntity = null;
+        listEntity = agendaEJB.listaProfesionales(idSucursalServicio);
         Map<String,Object> mapaResultado=new HashMap<String, Object>();
         mapaResultado.put("lista", listEntity);
 
