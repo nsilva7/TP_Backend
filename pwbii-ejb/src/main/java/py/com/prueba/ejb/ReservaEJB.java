@@ -1,4 +1,5 @@
 package py.com.prueba.ejb;
+import java.util.Calendar;
 import java.util.Date;
 import py.com.prueba.modelo.Reserva;
 import javax.ejb.Stateless;
@@ -54,5 +55,47 @@ public class ReservaEJB {
         entity.setFlagAsistido('N');
         entity.setFlagEstado('R');
         getEm().persist(entity);
+    }
+    
+    @SuppressWarnings("unchecked")
+    public List listaDisponibles(int idSucursalServicio, Date fecha) {
+        Calendar c = Calendar.getInstance();
+        c.setTime(fecha);
+        int dia = c.get(Calendar.DAY_OF_WEEK);
+        String diaColumn = "";
+        switch(dia) {
+            case 1:
+                diaColumn = "domingo";
+                break;
+            case 2:
+                diaColumn = "lunes";
+                break;
+            case 3:
+                diaColumn = "martes";
+                break;
+            case 4:
+                diaColumn = "miercoles";
+                break;
+            case 5:
+                diaColumn = "jueves";
+                break;
+            case 6:
+                diaColumn = "viernes";
+                break;
+            case 7:
+                diaColumn = "sabado";
+                break;
+            default:
+        }
+        
+        Query q = getEm().createQuery(
+                "SELECT ss.sucursal."+diaColumn+"_hora_apertura,ss.sucursal."+diaColumn+"_hora_cierre FROM SucursalServicio ss JOIN ss.sucursal su WHERE ss.idSucursalServicio = "+idSucursalServicio);
+        List horarios = (List) q.getResultList();
+        
+        Query qReserva = getEm().createQuery(
+                "SELECT r FROM Reserva r WHERE r.fecha != "+fecha);
+        List horariosReservados = (List) qReserva.getResultList();
+        
+        return (List<Persona>) q.getResultList();
     }
 }
