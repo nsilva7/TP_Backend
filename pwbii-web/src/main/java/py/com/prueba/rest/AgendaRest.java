@@ -3,6 +3,10 @@ package py.com.prueba.rest;
 import py.com.prueba.ejb.AgendaEJB;
 import py.com.prueba.modelo.Agenda;
 import py.com.prueba.modelo.Categoria;
+import py.com.prueba.modelo.Especialidad;
+import py.com.prueba.modelo.Reserva;
+import py.com.prueba.ejb.ReservaEJB;
+
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -27,6 +31,8 @@ import py.com.prueba.modelo.Persona;
 public class AgendaRest {
     @Inject
     private AgendaEJB agendaEJB;
+    @Inject
+    private ReservaEJB reservaEJB;
     @Context
     protected UriInfo uriInfo;
 
@@ -126,5 +132,22 @@ public class AgendaRest {
 
         return Response.ok(mapaResultado).build();
 
+    }
+    
+    @POST
+    @Path("/reserva")
+    public Response reservar(Reserva entity) throws WebApplicationException {
+        reservaEJB.persist(entity);
+
+        UriBuilder resourcePathBuilder = UriBuilder.fromUri(uriInfo
+                .getAbsolutePath());
+        URI resourceUri=null;
+        try {
+            resourceUri = resourcePathBuilder
+                    .path(URLEncoder.encode(entity.getIdReserva().toString(), "UTF-8")).build();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return Response.created(resourceUri).build();
     }
 }
