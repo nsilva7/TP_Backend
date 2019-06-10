@@ -211,15 +211,31 @@ public class ReservaEJB {
         return (List<Reserva>) q.getResultList();
     }
     
-    public Reserva actualizar(Reserva r){
+    public Reserva actualizar(Reserva r) throws ParseException{
         boolean changed = false;
         Integer id = r.getIdReserva();
+        Reserva reserva = this.get(id);
         String query = "Update Reserva SET ";
         if(r.getFlagEstado() != 0){
+            SimpleDateFormat dateFormat = new SimpleDateFormat ("yyyy-MM-dd hh:mm:ss");
+            String date =reserva.getFecha().toString() + " " +reserva.getHoraInicio().toString() ;
+            Date start = dateFormat.parse(date);
+            Date now = new Date();
+            
+            boolean ok = true;
+            if(r.getFlagEstado() == 'C'){//Actualizacion a C
+                ok = false;
+                if(now.after(start) && r.getObservacion() != null)
+                    ok = true;
+                else
+                    throw new RuntimeException("Error con parámetros");
+            }
             query+="flagEstado = '"+r.getFlagEstado()+"' ";
             changed = true;
         }        
         if(r.getFlagAsistio()!= 0){
+            if(reserva.getFlagAsistio() == 'S' || reserva.getFlagAsistio() == 'N')
+                throw new RuntimeException("La reserva ya tiene estado");
             if(changed)query+=", ";
             query+="flagAsistio = '"+r.getFlagAsistio()+"' ";
             changed = true;
