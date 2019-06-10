@@ -1,6 +1,10 @@
 package py.com.prueba.modelo;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -26,7 +30,6 @@ public class Servicio implements Serializable {
     
     @JoinColumn(name = "id_especialidad", referencedColumnName = "id_especialidad")
     @ManyToOne(fetch = FetchType.EAGER)
-    @JsonIgnore
     private Especialidad especialidad;
     
     @OneToMany(mappedBy = "servicio",fetch = FetchType.EAGER)
@@ -58,6 +61,14 @@ public class Servicio implements Serializable {
 
     public void setDuracion_referencia(Integer duracion_referencia) {
         this.duracion_referencia = duracion_referencia;
+    }
+
+    public List<SucursalServicio> getSucursalServicioList() {
+        return sucursalServicioList;
+    }
+
+    public void setSucursalServicioList(List<SucursalServicio> sucursalServicioList) {
+        this.sucursalServicioList = sucursalServicioList;
     }
     
     

@@ -72,8 +72,13 @@ public class AgendaEJB {
     }
     
     @SuppressWarnings("unchecked")
-    public List<Especialidad> listaEspecialidades() {
-        return (List<Especialidad>) EspecialidadEJB.lista();
+    public List<Especialidad> listaEspecialidades(int idSucursal) {
+        return (List<Especialidad>) EspecialidadEJB.lista(idSucursal);
+    }
+    
+    @SuppressWarnings("unchecked")
+    public List<Persona> listaProfesionales(int idSucursalServicio) {
+        return (List<Persona>) personaEJB.listaProfesionales(idSucursalServicio);
     }
     
 }

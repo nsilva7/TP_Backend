@@ -1,11 +1,16 @@
 package py.com.prueba.modelo;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIdentityReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name="sucursal_servicio")
@@ -32,14 +37,16 @@ public class SucursalServicio implements Serializable {
     
     @JoinColumn(name = "id_sucursal", referencedColumnName = "id_sucursal")
     @ManyToOne(fetch = FetchType.EAGER)
-    @JsonIgnore
+    @JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="idSucursal")
+    @JsonIdentityReference(alwaysAsId=true)
     private Sucursal sucursal;
     
     @JoinColumn(name = "id_servicio", referencedColumnName = "id_servicio")
     @ManyToOne(fetch = FetchType.EAGER)
-    @JsonIgnore
     private Servicio servicio;
     
+    @OneToMany(mappedBy = "sucursalServicio",fetch = FetchType.EAGER)
+    private List<PersonaSucursalServicio> personaSucursalServicioList;
     public SucursalServicio() {
 
     }
@@ -52,29 +59,15 @@ public class SucursalServicio implements Serializable {
         this.idSucursalServicio = idSucursalServicio;
     }
 
-    public Integer getDuracion() {
-        return duracion;
+    public Sucursal getSucursal() {
+        return sucursal;
     }
 
-    public void setDuracion(Integer duracion) {
-        this.duracion = duracion;
+    public void setSucursal(Sucursal sucursal) {
+        this.sucursal = sucursal;
     }
 
-    public BigInteger getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(BigInteger precio) {
-        this.precio = precio;
-    }
-
-    public Integer getCapacidad() {
-        return capacidad;
-    }
-
-    public void setCapacidad(Integer capacidad) {
-        this.capacidad = capacidad;
-    }
+   
 
 
     

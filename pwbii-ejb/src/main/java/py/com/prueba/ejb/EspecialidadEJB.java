@@ -39,10 +39,16 @@ public class EspecialidadEJB {
         this.delete(entity.getIdEspecialidad());
     }
     @SuppressWarnings("unchecked")
-    public List<Especialidad> lista() {
+    public List<Especialidad> lista(int idSucursal) {
         Query q = getEm().createQuery(
-                "SELECT e FROM Especialidad e ");
+                "SELECT s.especialidad FROM SucursalServicio ss JOIN ss.servicio s WHERE ss.sucursal.idSucursal = "+idSucursal);
         return (List<Especialidad>) q.getResultList();
     }
+    /*@SuppressWarnings("unchecked")
+    public List lista() {
+        Query q = getEm().createQuery(
+                "SELECT e,ss FROM SucursalServicio ss JOIN ss.servicio s JOIN s.especialidad e");
+        return (List) q.getResultList();
+    }*/
    
 }

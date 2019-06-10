@@ -16,6 +16,7 @@
       <class>py.com.prueba.modelo.Servicio</class>
       <class>py.com.prueba.modelo.Especialidad</class>
       <class>py.com.prueba.modelo.SucursalServicio</class>
+      <class>py.com.prueba.modelo.PersonaSucursalServicio</class>
       <properties>
          <!-- Properties for Hibernate -->
          <!-- property name="hibernate.hbm2ddl.auto" value="update"/-->

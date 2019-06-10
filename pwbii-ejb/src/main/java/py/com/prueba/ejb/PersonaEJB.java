@@ -42,6 +42,14 @@ public class PersonaEJB {
                 "SELECT p FROM Persona p");
         return (List<Persona>) q.getResultList();
     }
+    
+    @SuppressWarnings("unchecked")
+    public List<Persona> listaProfesionales(int idSucursalServicio) {
+        Query q = getEm().createQuery(
+                "SELECT e FROM PersonaSucursalServicio pss JOIN pss.empleado e WHERE e.flagEmpleado = '1' AND pss.sucursalServicio.idSucursalServicio = "+idSucursalServicio);
+        return (List<Persona>) q.getResultList();
+    }
+    
     public Long total() {
         Query q = getEm().createQuery(
                 "Select Count(p) from Persona p");
